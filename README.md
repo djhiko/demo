@@ -16,6 +16,8 @@ cd d:\Developing\Projects\Python\demo
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install fastapi uvicorn jinja2 python-multipart itsdangerous
+# Или
+pip install -r requirements.txt
 ```
 
 ## SQL-скрипты, обязательные для работоспособности
