@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/styles/admin.css" />
+{% endblock %}
+
+{% block content %}
+<div class="page-shell admin">
+  <div class="requests">
+    {% for request in requests %}
+    <div class="request">
+      <div class="request-field">Курс: {{ request["course_name"] }}</div>
+
+      <div class="request-field">
+        Студент:
+        {{ request["user_last_name"] }}
+        {{ request["user_first_name"] }}
+        ({{ request["user_login"] }})
+      </div>
+
+      <div class="request-field">Статус: {{ request["status"] }}</div>
+
+      <div class="request-field">
+        Желаемая дата начала обучения:
+        {{ request["learning_start"] | format_date }}
+      </div>
+
+      <div class="request-field">
+        Способ оплаты: {{ request["payment_type"] }}
+      </div>
+
+      <form
+        class="request-form"
+        action="/admin/requests/{{ request['id'] }}/status"
+        method="post"
+      >
+        <div class="request-form__field">
+          <select name="status" class="request-form__input" required>
+            <option value="Новая" {% if request["status"] == "Новая" %}selected{% endif %}>
+                Новая
+            </option>
+
+            <option value="Идет обучение" {% if request["status"] == "Идет обучение" %}selected{% endif %}>
+                Идет обучение
+            </option>
+
+            <option value="Обучение завершено" {% if request["status"] == "Обучение завершено" %}selected{% endif %}>
+                Обучение завершено
+            </option>
+          </select>
+        </div>
+
+        <button class="request-form__submit submit">
+          Изменить статус
+        </button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,143 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.slider {
+    max-width: 900px;
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+    background-color: #dee2e6;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #0d47a1;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.swiper-pagination-bullet {
+    background-color: #ced4da;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0d47a1;
+}
+
+
+
+.review-form__field {
+    width: 100%;
+}
+
+.review-form__input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100px;
+    padding: var(--space-md);
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    resize: vertical;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.request-form {
+    max-width: 760px;
+    width: 100%;
+    margin: 0;
+}
+
+.request-form__title {
+    margin: 0 0 8px;
+    color: #ffffff;
+}
+
+.request-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.request-form__field label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.request-form__input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-md);
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    font-family: Inter;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Адаптация под телефон */
+@media (max-width: 390px) {
+    .profile {
+        padding: 0;
+        gap: var(--space-lg);
+    }
+
+    .slider {
+        height: 220px;
+        border-radius: 12px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 36px;
+        height: 36px;
+    }
+
+    .review-form__input {
+        font-size: 14px;
+    }
+
+    .request-form {
+        max-width: 330px;
+        width: calc(100% - 20px);
+        padding: var(--space-lg);
+        border-radius: 12px;
+    }
+
+    .request-form__input,
+    .request-form__field label {
+        font-size: 14px;
+    }
+}

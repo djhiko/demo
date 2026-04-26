@@ -1,0 +1,262 @@
+/* Подключаем Inter шрифт в проект */
+@font-face {
+    font-family: "Inter";
+    src: url("/static/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+/* Подключаем Inter шрифт в вариации Italic (курсив) */
+@font-face {
+    font-family: "Inter";
+    src: url("/static/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+/* Селектор, обозначающий корневой (<html>) элемент в документе */
+:root { 
+    font-family: "Inter";
+    color: #ffffff;
+    --color-primary: #007bff;
+    --color-primary-dark: #0d47a1;
+    --color-bg: #ced4da;
+    --color-surface: #dee2e6;
+    --color-text-light: #ffffff;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 20px;
+}
+
+/* Селектор тега body */
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: var(--color-bg);
+}
+
+.app-content {
+    min-height: calc(100vh - 64px);
+    animation: fade-in 0.2s ease;
+}
+
+.page-shell {
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-xl);
+}
+
+.topbar {
+    box-sizing: border-box;
+    min-height: 64px;
+    padding: var(--space-md) var(--space-xl);
+    background-color: var(--color-primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.topbar__brand {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    transition: opacity 0.2s ease;
+}
+
+.topbar__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.topbar__link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.topbar__logout-form {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+.topbar__logout {
+    background-color: transparent;
+    border: 1px solid var(--color-text-light);
+    color: var(--color-text-light);
+    border-radius: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+/* Устанавливаем для элементов сайта необходимую размерность и вид шрифта */
+h1 {
+    font-size: 36px;
+    font-weight: 700; /* Bold */
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 500; /* Medium */
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 500; /* Medium */
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400; /* Regular */
+}
+
+span {
+    font-size: 12px;
+    font-weight: 300; /* Light */
+}
+
+/* Селектор компонента ошибки */
+.error {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--color-primary);
+    border-radius: 15px;
+    border: 1px solid var(--color-surface);
+    padding: var(--space-md);
+}
+
+input {
+    padding: var(--space-md);
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+}
+
+button {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xl);
+    border-radius: 15px;
+    background-color: var(--color-primary);
+}
+
+.submit {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--color-primary-dark);
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: var(--space-md);
+    cursor: pointer;
+    margin-top: var(--space-md);
+    transition: filter 0.2s ease;
+}
+
+.requests {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 900px;
+    width: 100%;
+}
+
+.request {
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-xl);
+    border-radius: 15px;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-surface);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.3);
+}
+
+.topbar__brand:hover,
+.topbar__brand:focus-visible {
+    opacity: 0.85;
+}
+
+.topbar__link:hover,
+.topbar__link:focus-visible {
+    border-color: var(--color-text-light);
+}
+
+.topbar__logout:hover,
+.topbar__logout:focus-visible {
+    background-color: var(--color-text-light);
+    color: var(--color-primary-dark);
+}
+
+.submit:hover,
+.submit:focus-visible {
+    filter: brightness(1.05);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+.request-field {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text-light);
+}
+
+@media (max-width: 390px) {
+    .page-shell {
+        padding: var(--space-md);
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .request {
+        padding: var(--space-lg);
+        border-radius: 12px;
+    }
+
+    .request-field {
+        font-size: 14px;
+    }
+}

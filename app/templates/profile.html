@@ -1,0 +1,109 @@
+{% extends "base.html" %} {% block styles %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<!-- Подключение стилей библиотеки, через которую реализовывается слайдер в профиле -->
+
+<link rel="stylesheet" href="/static/styles/profile.css" />
+{% endblock %}
+
+<!-- prettier ignore -->
+{% block content %}
+<div class="page-shell profile">
+  <div class="swiper slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="/static/assets/88-gHQq11R0.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/static/assets/hero.png" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/static/assets/1678694971_sa.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/static/assets/XXL_height.webp" />
+      </div>
+    </div>
+    <button class="swiper-button-prev"></button>
+    <button class="swiper-button-next"></button>
+
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <form class="request-form" action="/profile/requests" method="post">
+    <h2 class="request-form__title">Создать заявку</h2>
+
+    <div class="request-form__field">
+      <label for="course_id">Курс</label>
+      <select class="request-form__input" name="course_id" required>
+        {% for course in courses %}
+        <option value="{{ course['id'] }}">{{ course["name"] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="request-form__field">
+      <label for="learning_start">Желаемая дата начала обучения</label>
+      <input
+        class="request-form__input"
+        name="learning_start"
+        type="date"
+        required
+      />
+    </div>
+
+    <div class="request-form__field">
+      <label for="payment_type">Способ оплаты</label>
+      <select class="request-form__input" name="payment_type" required>
+        <option value="Карта">Карта</option>
+        <option value="Перевод">Перевод</option>
+      </select>
+    </div>
+
+    <div class="request-form__field">
+      <button class="request-form__submit submit">Создать заявку</button>
+    </div>
+  </form>
+
+  <div class="requests">
+    {% for request in requests %}
+    <div class="request">
+      <div class="request-field">Курс: {{ request["course_name"] }}</div>
+      <div class="request-field">Статус: {{ request["status"] }}</div>
+      <div class="request-field">
+        Желаемая дата начала обучения: {{ request["learning_start"] |
+        format_date }}
+      </div>
+      <div class="request-field">
+        Способ оплаты: {{ request["payment_type"] }}
+      </div>
+      {% if request["can_set_review"] %}
+      <form
+        class="review-form"
+        action="/profile/requests/{{ request['id'] }}/reviews"
+        method="post"
+      >
+        <div class="review-form__field">
+          <textarea
+            class="review-form__input"
+            rows="4"
+            name="review_text"
+            required
+          ></textarea>
+        </div>
+        <div class="review-form__field">
+          <button class="review-form__submit submit">Оставить отзыв</button>
+        </div>
+      </form>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Подключение скрипта библиотеки, через которую реализовывается слайдер -->
+<script src="/static/scripts/slider.js"></script>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!-- Наследуемся от базового шаблона -->
+{% extends "base.html" %}
+
+<!-- Подключаем CSS для модуля аутентификации (страница входа и регистрации) -->
+{% block styles %}
+<link rel="stylesheet" href="/static/styles/auth.css" />
+{% endblock %}
+
+<!-- prettier ignore -->
+{% block content %}
+<div class="page-shell auth">
+  <form class="auth-form surface-form" method="post" action="/auth/login">
+    <div class="auth-form__field">
+      <label for="login" class="auth-form__label">Логин</label>
+      <input
+        id="login"
+        class="auth-form__input"
+        name="login"
+        type="text"
+        pattern="^[A-Za-z0-9_.-]{6,255}$"
+        title="От 6 символов: латиница, цифры, _ . -"
+        autocomplete="username"
+        minlength="6"
+        maxlength="255"
+        required
+      />
+    </div>
+    <div class="auth-form__field">
+      <label for="password" class="auth-form__label">Пароль</label>
+      <input
+        id="password"
+        class="auth-form__input"
+        name="password"
+        type="password"
+        autocomplete="current-password"
+        required
+      />
+    </div>
+    <div class="auth-form__field">
+      {% if error_message %} {% include "components/error.html" %} {% endif %}
+    </div>
+    <div class="auth-form__field">
+      <button class="auth-form__submit submit">Войти</button>
+    </div>
+    <p class="auth-form__hint">
+      Еще нет аккаунта?
+      <a class="auth-form__link" href="/auth/register">Перейти к регистрации</a>
+    </p>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+.admin {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding: var(--space-xl);
+    min-height: 100%;
+}
+
+
+.request-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.request-form__field {
+    width: 100%;
+}
+
+.request-form__input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-md);
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    resize: vertical;
+    font-family: Inter;
+    font-weight: 400;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Адаптация под телефон */
+@media (max-width: 390px) {
+    .admin {
+        padding: 0;
+    }
+
+    .request-form__input {
+        font-size: 14px;
+    }
+}
